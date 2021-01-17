@@ -47,7 +47,7 @@ def fetch_open_tickets(date_from, date_to):
     pd_timeslots = pd.concat(l_timeslots).reset_index(drop=True)
 
     # Remove irrelivant timeslots
-    l_not_availble = pd_timeslots[pd_timeslots['restCount'] < 0].index
+    l_not_availble = pd_timeslots[pd_timeslots['restCount'] <= 0].index
     pd_timeslots.drop(l_not_availble, inplace=True)
 
     l_relevant_timeslot = pd_timeslots[~pd_timeslots['timeFrom'].isin(['19:30:00', '21:15:00'])].index
@@ -66,7 +66,7 @@ def main():
     pd_timeslots = fetch_open_tickets(date_from, date_to)
 
     # Drop non relevant column
-    pd_timeslots.drop(columns = list(set(pd_timeslots.columns) - {'dateSlot', 'timeFrom', 'timeTo'}), inplace=True)
+    pd_timeslots.drop(columns = list(set(pd_timeslots.columns) - {'dateSlot', 'timeFrom', 'timeTo', 'restCount'}), inplace=True)
 
     # Subset timeslots on not yet emailed timeslots
     pd_emailed = None
