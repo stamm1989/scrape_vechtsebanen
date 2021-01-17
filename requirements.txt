@@ -1,0 +1,9 @@
+numpy==1.17.5
+requests
+sendmail
+pretty_html_table
+pandas
+pykeepass
+PyYAML
+openpyxl
+xlrd
