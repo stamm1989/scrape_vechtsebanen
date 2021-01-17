@@ -1,9 +1,9 @@
 numpy==1.17.5
-requests
-sendmail
-pretty_html_table
-pandas
-pykeepass
-PyYAML
-openpyxl
-xlrd
+requests==2.24.0
+sendmail==2.0
+pandas==1.1.2
+pykeepass==3.2.1
+PyYAML==5.3.1
+pretty-html-table==0.9.dev0
+openpyxl==3.0.5
+xlrd==1.2.0
