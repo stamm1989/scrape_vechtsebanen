@@ -67,6 +67,7 @@ def main():
 
     # Drop non relevant column
     pd_timeslots.drop(columns = list(set(pd_timeslots.columns) - {'dateSlot', 'timeFrom', 'timeTo', 'restCount'}), inplace=True)
+    pd_timeslots.rename(columns={'restCount': 'ticketsAvailable'}, inplace=True)
 
     # Subset timeslots on not yet emailed timeslots
     pd_emailed = None
@@ -78,7 +79,7 @@ def main():
    
     if len(pd_timeslots) > 0:
 
-        html_table = pretty_html_table.build_table(pd_timeslots[['dateSlot', 'timeFrom', 'timeTo']], 'blue_light')
+        html_table = pretty_html_table.build_table(pd_timeslots[['dateSlot', 'timeFrom', 'timeTo', 'ticketsAvailable']], 'blue_light')
 
         b_send = send_mail.sendmail(
             l_to=[
